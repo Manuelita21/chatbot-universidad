@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot Educativo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Chatbot Escolar</h2>
+
+<div id="chat"></div>
+
+<input id="msg" type="text" placeholder="Escribe tu duda">
+<button onclick="enviar()">Enviar</button>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
