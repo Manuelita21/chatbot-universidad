@@ -1,0 +1,73 @@
+import { pipeline } from "https://cdn.jsdelivr.net/npm/@xenova/transformers@2.6.0";
+
+// Variables globales
+let faqs = [];
+let extractor;
+
+// Cargar FAQs
+fetch("faqs.json")
+    .then(r => r.json())
+    .then(data => faqs = data);
+
+// Cargar modelo
+async function cargarModelo() {
+    extractor = await pipeline(
+        "feature-extraction",
+        "Xenova/all-MiniLM-L6-v2"
+    );
+    console.log("Modelo cargado correctamente");
+}
+
+cargarModelo();
+
+// Función principal
+window.enviar = async function () {
+    let input = document.getElementById("msg");
+    let texto = input.value;
+    if (!texto) return;
+
+    mostrar("Tú: " + texto);
+    input.value = "";
+
+    let respuesta = await buscarRespuesta(texto);
+    mostrar("Bot: " + respuesta);
+};
+
+// Buscar mejor respuesta usando similitud
+async function buscarRespuesta(textoUsuario) {
+    if (!extractor) {
+        return "Espera un momento, estoy cargando el sistema.";
+    }
+
+    let embUsuario = await extractor(textoUsuario, { pooling: "mean", normalize: true });
+
+    let mejorScore = 0;
+    let mejorRespuesta = "No encontré información exacta. ¿Podrías reformular tu pregunta?";
+
+    for (let f of faqs) {
+        let embFAQ = await extractor(f.pregunta, { pooling: "mean", normalize: true });
+
+        let score = cosineSimilarity(embUsuario.data, embFAQ.data);
+
+        if (score > mejorScore) {
+            mejorScore = score;
+            mejorRespuesta = f.respuesta;
+        }
+    }
+
+    return mejorRespuesta;
+}
+
+// Similitud coseno
+function cosineSimilarity(a, b) {
+    let sum = 0;
+    for (let i = 0; i < a.length; i++) {
+        sum += a[i] * b[i];
+    }
+    return sum;
+}
+
+// Mostrar mensajes
+function mostrar(texto) {
+    document.getElementById("chat").innerHTML += `<p>${texto}</p>`;
+}
