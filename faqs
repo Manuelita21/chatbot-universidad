@@ -1,0 +1,37 @@
+[
+  {
+    "pregunta": "¿Cómo puedo inscribirme?",
+    "respuesta": "El proceso de inscripción se realiza en Control Escolar, de lunes a viernes."
+  },
+  {
+    "pregunta": "¿Cómo solicito una beca?",
+    "respuesta": "Las becas se solicitan en línea desde la plataforma institucional."
+  },
+  {
+    "pregunta": "¿Cuál es el horario de atención?",
+    "respuesta": "El horario de atención es de 8:00 am a 2:00 pm."
+  },
+  {
+  "pregunta": "¿Qué documentos necesito para inscribirme?",
+  "respuesta": "Para la inscripción necesitas acta de nacimiento, CURP, identificación oficial y comprobante de estudios."
+},
+{
+  "pregunta": "¿Cuándo inicia el periodo de inscripciones?",
+  "respuesta": "El periodo de inscripciones se publica en el calendario escolar oficial de la institución."
+},
+{
+  "pregunta": "¿Dónde puedo consultar el calendario escolar?",
+  "respuesta": "El calendario escolar se encuentra disponible en el sitio web oficial de la institución."
+},
+{
+  "pregunta": "¿Puedo realizar mis trámites en línea?",
+  "respuesta": "Algunos trámites pueden realizarse en línea a través de la plataforma institucional; otros requieren atención presencial."
+},
+{
+  "pregunta": "¿A quién puedo contactar si tengo problemas con mi inscripción?",
+  "respuesta": "Si tienes problemas con tu inscripción, puedes acudir directamente al área de Control Escolar."
+}
+
+
+
+]
